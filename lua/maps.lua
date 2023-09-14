@@ -32,3 +32,9 @@ keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
+
+-- Use fzf to find files
+vim.api.nvim_set_keymap('n', '<leader>ff', ':FZF<CR>', { noremap = true, silent = true })
+-- Use fzf for searching within files
+vim.api.nvim_set_keymap('n', '<leader>fg', ':FZF<CR>', { noremap = true, silent = true })
+
