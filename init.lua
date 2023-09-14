@@ -4,4 +4,3 @@ require('coc')
 require('highlights')
 require('maps')
 require('plugins')
-

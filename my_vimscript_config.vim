@@ -13,4 +13,3 @@ nnoremap <leader>fD :FlutterVisualDebug<cr>
 " Configuration for vim-lsc and vim-lsc-dart
 " Example LSP configuration for Dart
 autocmd FileType dart LspInstallServer dartls
-
