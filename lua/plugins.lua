@@ -51,5 +51,5 @@ packer.startup(function(use)
   use 'natebosch/vim-lsc' -- For communicating with a language server
   use 'natebosch/vim-lsc-dart' -- vim-lsc server configuration for the Dart language
   use {'neoclide/coc.nvim', branch = 'release'}
-  use 'junegunn/fzf.vim'
+  use { "ibhagwan/fzf-lua"}
 end) 
