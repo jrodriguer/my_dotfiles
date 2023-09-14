@@ -172,4 +172,3 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", list_opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", list_opts)
 -- Resume the latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", list_opts)
-
