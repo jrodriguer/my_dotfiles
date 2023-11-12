@@ -37,35 +37,39 @@ local on_attach = function(client, bufnr)
 end
 
 protocol.CompletionItemKind = {
-  'T', -- Text
-  'Mth', -- Method
-  'F', -- Function
-  'C', -- Constructor
-  'fn', -- Field
-  'var', -- Variable
-  'Class', -- Class
-  'I', -- Interface
-  'Mdl', -- Module
-  'Prop', -- Property
-  'U', -- Unit
-  'Value', -- Value
-  'E', -- Enum
-  'Kyw', -- Keyword
-  'S', -- Snippet
+  '', -- Text
+  '', -- Method
+  '', -- Function
+  '', -- Constructor
+  '', -- Field
+  '', -- Variable
+  '', -- Class
+  'ﰮ', -- Interface
+  '', -- Module
+  '', -- Property
+  '', -- Unit
+  '', -- Value
+  '', -- Enum
+  '', -- Keyword
+  '﬌', -- Snippet
   '', -- Color
-  'File', -- File
-  'Rfr', -- Reference
+  '', -- File
+  '', -- Reference
   '', -- Folder
   '', -- EnumMember
-  'const', -- Constant
-  'Str', -- Struct
-  'Event', -- Event
-  'Op', -- Operator
-  'TParam', -- TypeParameter
+  '', -- Constant
+  '', -- Struct
+  '', -- Event
+  'ﬦ', -- Operator
+  '', -- TypeParameter
 }
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
 nvim_lsp.flow.setup {
   on_attach = on_attach,
@@ -82,6 +86,43 @@ nvim_lsp.tsserver.setup {
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+nvim_lsp.lua_ls.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 nvim_lsp.cssls.setup {
@@ -104,7 +145,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- Diagnostic symbols in the sign column (gutter)
-local signs = { Error = "E", Warn = "W", Hint = "H ", Info = "I" }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
