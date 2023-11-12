@@ -8,7 +8,8 @@ ts.setup {
   },
   indent = {
     enable = true,
-    disable = {},
+    -- NOTE: enabling indentation significantly slows down editing in Dart files
+	  disable = {'dart'}
   },
   ensure_installed = {
     "markdown",
