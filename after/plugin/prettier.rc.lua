@@ -13,8 +13,10 @@ prettier.setup({
     "typescript",
     "typescriptreact",
     "yaml",
+    "lua"
   },
   cli_options = {
+    embedded_language_formatting = "auto",
     arrow_parens = "always",
     bracket_spacing = true,
     bracket_same_line = false,
