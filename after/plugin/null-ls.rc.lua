@@ -20,7 +20,6 @@ null_ls.setup {
     }),
     null_ls.builtins.diagnostics.npm_groovy_lint,
     null_ls.builtins.diagnostics.zsh,
-    null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.formatting.dart_format
   }
 }

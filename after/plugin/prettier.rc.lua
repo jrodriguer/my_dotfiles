@@ -10,8 +10,8 @@ prettier.setup({
     "json",
     "markdown",
     "scss",
-    -- "typescript",
-    -- "typescriptreact",
+    "typescript",
+    "typescriptreact",
     "yaml",
     "lua"
   },
