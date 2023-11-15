@@ -20,6 +20,7 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp'                -- Completion
   use 'neovim/nvim-lspconfig'           -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use('MunifTanjim/prettier.nvim')      --Prettier plugin for Neovim's built-in
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
@@ -40,6 +41,8 @@ packer.startup(function(use)
     }
   }
   use 'norcalli/nvim-colorizer.lua'
+  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+  use 'Bekaboo/deadcolumn.nvim'
   use 'folke/zen-mode.nvim'
   use({
     "iamcco/markdown-preview.nvim",
@@ -47,9 +50,8 @@ packer.startup(function(use)
   })
 
   use 'lewis6991/gitsigns.nvim'
-  use 'dinhhuy258/git.nvim'        -- For git blame & browse
+  use 'dinhhuy258/git.nvim' -- For git blame & browse
 
-  use('MunifTanjim/prettier.nvim') --Prettier plugin for Neovim's built-in
 
   use {
     'akinsho/flutter-tools.nvim',
@@ -61,6 +63,4 @@ packer.startup(function(use)
 
   use { 'neoclide/coc.nvim', branch = 'release' }
   use { "ibhagwan/fzf-lua" }
-
-  use 'Bekaboo/deadcolumn.nvim'
 end)

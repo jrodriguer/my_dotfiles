@@ -1,22 +1,21 @@
 local prettier = require("prettier")
 
 prettier.setup({
-  bin = 'prettierd', 
+  bin = 'prettierd',
   filetypes = {
     "css",
     "html",
-    "javascript",
-    "javascriptreact",
+    -- "javascript",
+    -- "javascriptreact",
     "json",
     "markdown",
     "scss",
-    "typescript",
-    "typescriptreact",
+    -- "typescript",
+    -- "typescriptreact",
     "yaml",
     "lua"
   },
   cli_options = {
-    embedded_language_formatting = "auto",
     arrow_parens = "always",
     bracket_spacing = true,
     bracket_same_line = false,
@@ -35,18 +34,5 @@ prettier.setup({
     trailing_comma = "es5",
     use_tabs = true,
     vue_indent_script_and_style = true,
-  },
-  ["null-ls"] = {
-    condition = function()
-      return prettier.config_exists({
-        -- if `false`, skips checking `package.json` for `"prettier"` key
-        check_package_json = true,
-      })
-    end,
-    runtime_condition = function(params)
-      -- return false to skip running prettier
-      return true
-    end,
-    timeout = 5000,
   }
 })

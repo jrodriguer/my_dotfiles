@@ -9,11 +9,9 @@ ts.setup {
   indent = {
     enable = true,
     -- NOTE: enabling indentation significantly slows down editing in Dart files
-	  disable = {'dart'}
+    disable = { 'dart' }
   },
   ensure_installed = {
-    "markdown",
-    "markdown_inline",
     "tsx",
     "typescript",
     "toml",

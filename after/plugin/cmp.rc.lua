@@ -40,6 +40,13 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
   }),
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    }, {
+      { name = 'buffer' },
+    })
+  }),
   formatting = {
     format = lspkind.cmp_format({
       maxwidth = 50,
